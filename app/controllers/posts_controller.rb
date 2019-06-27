@@ -3,3 +3,4 @@ class PostsController < Controller
     @posts = Post.all
   end
 end
+
