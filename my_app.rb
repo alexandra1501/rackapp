@@ -11,7 +11,5 @@ class TestMyApp < Minitest::Test
       assert_equal 200, @controller.call.status
     end
 
-    should 'have '
-
   end
 end

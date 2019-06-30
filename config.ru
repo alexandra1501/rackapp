@@ -1,5 +1,7 @@
+require 'yaml'
 require 'bundler'
 require 'rubygems'
+
 Bundler.require
 
 require './app'
