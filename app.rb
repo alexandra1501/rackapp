@@ -6,6 +6,15 @@ require 'yaml'
 #  DB = Sequel.connect(config)
 #  Sequel.extension :migration
 #end
+require "bundler"
+Bundler.require
+
+require 'yaml'
+
+file_path = File.expand_path "../db/database.yaml", __FILE__
+file = YAML.load_file file_path
+
+DB = Sequel.connect (file)
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each {|file| require file } #підключення всіх класів
 Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each {|file| require file } #підключення всіх файлів
