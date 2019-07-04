@@ -1,7 +1,6 @@
 - @posts.each do |post|
   h2 = post.content
 
-#  div id="container"
-#    form action="/" method="post"
-#      input name="name" type="text"
-#      input type="submit" value="ABC"
+form action="/posts" method="post"
+  input name="content" type="string"
+  input type="submit" value="Post"

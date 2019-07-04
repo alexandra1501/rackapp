@@ -1,8 +1,8 @@
 class Controller
-  attr_reader :name, :action
+  attr_reader :name, :action, :request_parameters
   attr_accessor :status, :headers, :content
 
-  def initialize(name: nil, action: nil)
+  def initialize(request_parameters = {}, name: nil, action: nil)
     @name = name
     @action = action
   end
