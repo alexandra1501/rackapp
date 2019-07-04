@@ -7,7 +7,7 @@ class TestMyApp < Minitest::Test
       @controller = Controller.new
     end
 
-    should 'have a 200 status' do
+    test 'have a 200 status' do
       assert_equal 200, @controller.call.status
     end
 

@@ -1,29 +1,23 @@
 require 'yaml'
 
-#db_config_file = File.join(File.dirname(__FILE__), 'app', 'database.yml')
-#if File.exist?(db_config_file)
-#  config = YAML.load(File.read(db_config_file))
-#  DB = Sequel.connect(config)
-#  Sequel.extension :migration
-#end
-require "bundler"
-Bundler.require
+db_config_file = File.join(File.dirname(__FILE__), 'app', 'database.yml')
+if File.exist?(db_config_file)
+  config  = YAML.load(File.read(db_config_file))
+  DB = Sequel.connect(config)
+  Sequel.extension :migration
+end
 
-require 'yaml'
 
-file_path = File.expand_path "../db/database.yaml", __FILE__
-file = YAML.load_file file_path
+Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each {|file| require file }
 
-DB = Sequel.connect (file)
+Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each {|file| require file }
 
-Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each {|file| require file } #підключення всіх класів
-Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each {|file| require file } #підключення всіх файлів
+if DB
+  Sequel::Migrator.run(DB, File.join(File.dirname(__FILE__), 'app', 'db', 'migrations'))
+end
 
-#if DB
-#  Sequel::Migrator.run(DB, File.join(File.dirname(__FILE__), 'app', 'db', #'migrations'))
-#end
 
-ROUTES =  YAML.load(File.read(File.join(File.dirname(__FILE__), 'app', 'routes.yml')))
+ROUTES = YAML.load(File.read(File.join(File.dirname(__FILE__), 'app', 'routes.yml')))
 
 require "./lib/router"
 
