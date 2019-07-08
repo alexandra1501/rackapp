@@ -1,6 +1,9 @@
-- @posts.each do |post|
-  h2 = post.content
+h1 = "Let's hope it works"
 
-form action="/posts" method="post"
+
+- @posts.each do |post|
+  li = post.content
+
+form action="/" method="post"
   input name="content" type="string"
   input type="submit" value="Post"

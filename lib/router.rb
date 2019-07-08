@@ -1,5 +1,5 @@
 class Router
-  attr_reader :routes
+  attr_reader :routes, :request_parameters
 
   def initialize(routes)
     @routes = routes
@@ -19,6 +19,6 @@ class Router
     def controller(string)
       controller_name, action_name = string.split('#')
       klass = Object.const_get "#{controller_name.capitalize}Controller"
-      klass.new(name: controller_name, action: action_name.to_sym)
+      klass.new(controller_name, action_name, request_parameters)
     end
   end

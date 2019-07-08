@@ -1,14 +1,15 @@
 class Controller
-  attr_reader :name, :action, :request_parameters
+  attr_reader :controller_name, :action_name, :request_parameters
   attr_accessor :status, :headers, :content
 
-  def initialize(request_parameters = {}, name: nil, action: nil)
-    @name = name
-    @action = action
+  def initialize(controller_name, action_name, request_parameters = {})
+    @controller_name = controller_name
+    @action_name = action_name
+    @request_parameters = request_parameters
   end
 
   def call
-    send(action)
+    send(action_name)
     self.status = 200
     self.headers = {'Content-Type'=>'text/html'}
     self.content = [template.render(self)]
@@ -23,6 +24,6 @@ class Controller
   end
 
   def template
-    Slim::Template.new(File.join(App.root, 'app', 'views', "#{self.name}", "#{self.action}.slim"))
+    Slim::Template.new(File.join(App.root, 'app', 'views', "#{self.controller_name}", "#{self.action_name}.slim"))
   end
 end
