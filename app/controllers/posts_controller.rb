@@ -1,5 +1,3 @@
-#require './lib/controller'
-
 class PostsController < Controller
 
   def index
@@ -7,7 +5,7 @@ class PostsController < Controller
   end
 
   def create
-    @post = Post.new(@request_parameters).save
+    @post = Post.new(request_parameters).save
   end
 
 

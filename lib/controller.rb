@@ -2,7 +2,7 @@ class Controller
   attr_reader :controller_name, :action_name, :request_parameters
   attr_accessor :status, :headers, :content
 
-  def initialize(controller_name, action_name, request_parameters = {})
+  def initialize(controller_name = {}, action_name = {}, request_parameters = {})
     @controller_name = controller_name
     @action_name = action_name
     @request_parameters = request_parameters

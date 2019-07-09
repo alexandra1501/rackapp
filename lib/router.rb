@@ -21,4 +21,8 @@ class Router
       klass = Object.const_get "#{controller_name.capitalize}Controller"
       klass.new(controller_name, action_name, request_parameters)
     end
+
+    def parsed(request_parameters)
+      request_parameters.split('&').map { |param| param.split('=')}.to_h
+    end
   end
