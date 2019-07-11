@@ -1,8 +1,6 @@
 require 'yaml'
 
-db_config_file = File.join(File.dirname(__FILE__), 'app', 'database.yml')
-config  = YAML.load(File.read(db_config_file))
-DB = Sequel.connect(config)
+DB = Sequel.connect(adapter: :sqlite, database: 'dev.sqlite3')
 Sequel.extension :migration
 
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each { |file| require file }

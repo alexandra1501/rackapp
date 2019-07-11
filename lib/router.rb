@@ -7,9 +7,9 @@ class Router
 
   def resolve(env)
     path = env['REQUEST_PATH']
-    request_parameters = get_parameters(env['rack.input'].read)
+    request_parameters = get_parameters(env['rack.input'].read.gsub(/\+/," "))
     if routes.key?(path)
-      controller(routes[path], request_parameters).call
+    controller(routes[path], request_parameters).call
     else
       Controller.new.not_found
     end

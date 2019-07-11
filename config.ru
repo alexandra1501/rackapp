@@ -1,4 +1,3 @@
-require 'yaml'
 require 'bundler'
 require 'rubygems'
 
