@@ -1,2 +1,2 @@
-"/" : "posts#index"
-"/create" : "posts#create"
+"/" : "posts#create"
+

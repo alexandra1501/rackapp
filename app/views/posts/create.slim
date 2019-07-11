@@ -1,1 +1,9 @@
-h1 = 'Post was created'
+title = "No Framework Application"
+h1 = "Let's hope it works"
+
+- @posts.each do |post|
+  li = post.content
+
+form action="/" method="post"
+  input name="content" type="string"
+  input type="submit" value="Post"
