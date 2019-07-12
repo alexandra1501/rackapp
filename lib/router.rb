@@ -11,7 +11,7 @@ class Router
     if routes.key?(path)
     controller(routes[path], request_parameters).call
     else
-      Controller.new.not_found
+      Controller.new("","",{content: ""}).not_found
     end
   end
 
