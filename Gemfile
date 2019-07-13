@@ -4,4 +4,5 @@ gem 'sequel'
 gem 'rack'
 gem 'slim'
 gem 'minitest'
+gem 'test-unit'
 

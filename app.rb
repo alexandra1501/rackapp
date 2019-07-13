@@ -1,4 +1,5 @@
 require 'yaml'
+require 'sequel'
 
 DB = Sequel.connect(adapter: :sqlite, database: 'dev.sqlite3')
 Sequel.extension :migration
