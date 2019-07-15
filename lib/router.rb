@@ -17,9 +17,9 @@ class Router
 
   private
 
-    def controller(string, request_parameters = {})
-      controller_name, action_name = string.split('#')
-      klass = Object.const_get "#{controller_name.capitalize}Controller"
-      klass.new(controller_name, action_name, request_parameters)
-    end
+  def controller(string, request_parameters = {})
+    controller_name, action_name = string.split('#')
+    klass = Object.const_get "#{controller_name.capitalize}Controller"
+    klass.new(controller_name, action_name, request_parameters)
   end
+end
