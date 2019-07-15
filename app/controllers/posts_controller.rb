@@ -5,7 +5,7 @@ class PostsController < Controller
   end
 
   def create
-    @post = Post.new(request_parameters).save
+    @post = Post.new(request_parameters).save unless request_parameters.empty?
   end
 
 end

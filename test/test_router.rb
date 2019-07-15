@@ -1,10 +1,14 @@
 require 'test_helper'
 
-class TestPostController < Minitest::Unit::TestCase
+class TestRouter < Minitest::Test
+  include Rack::Test::Methods
 
-  def test_save_the_post
-    post = Post.new({content: "haha"}).save
-    assert_equal true, post.exists?
+  def app
+    builder = Rack::Builder.new
+    builder.run App.new
   end
 
+  def test_responds_to_the_wrong_path
+
+  end
 end

@@ -1,3 +1,5 @@
+require 'slim'
+
 class Controller
   attr_reader :controller_name, :action_name, :request_parameters
   attr_accessor :status, :headers, :content

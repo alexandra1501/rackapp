@@ -6,12 +6,12 @@ class Router
   end
 
   def resolve(env)
-    path = env['REQUEST_PATH']
-    request_parameters = get_parameters(env['rack.input'].read.gsub(/\+/," "))
+    request = Rack::Request.new(env)
+    path = request.path_info
     if routes.key?(path)
-    controller(routes[path], request_parameters).call
+      controller(routes[path], request.params).call
     else
-      Controller.new("","",{content: ""}).not_found
+      Controller.new("","",{content: nil}).not_found
     end
   end
 
@@ -21,9 +21,5 @@ class Router
       controller_name, action_name = string.split('#')
       klass = Object.const_get "#{controller_name.capitalize}Controller"
       klass.new(controller_name, action_name, request_parameters)
-    end
-
-    def get_parameters(request_parameters)
-      request_parameters.split('&').map { |param| param.split('=')}.to_h
     end
   end
