@@ -1,7 +1,4 @@
 require './lib/paths.rb'
-require 'yaml'
-require 'sequel'
-require "./lib/router"
 
 class App
 
