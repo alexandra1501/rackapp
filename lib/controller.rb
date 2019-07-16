@@ -1,5 +1,9 @@
 require 'erb'
 
+class String
+  alias :each :each_char
+end
+
 class Controller
   attr_reader :controller_name, :action_name, :request_parameters
   attr_accessor :status, :headers, :content
@@ -8,14 +12,13 @@ class Controller
     @controller_name = controller_name
     @action_name = action_name
     @request_parameters = request_parameters
-    @template = File.read('./lib/create.html.erb')
   end
 
   def call
     send(action_name)
     self.status = 200
     self.headers = {'Content-Type'=>'text/html'}
-    self.content = [render]
+    self.content = ERB.new(template).result(binding)
     self
   end
 
@@ -26,7 +29,7 @@ class Controller
     self
   end
 
-  def render
-    temp = ERB.new(@template).result(binding)
+  def template
+    File.read("./app/views/#{controller_name}/#{action_name}.html.erb")
   end
 end
