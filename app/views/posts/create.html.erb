@@ -1,0 +1,12 @@
+<h1>Welcome to my app</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= post.content %></li>
+  <% end %>
+</ul>
+
+<form action="/create" method="post">
+  <input type="text" name="content">
+  <input type="submit" value="Post!">
+</form>
