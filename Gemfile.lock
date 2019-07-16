@@ -2,16 +2,15 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitest (5.11.3)
-    power_assert (1.1.4)
     rack (2.0.7)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     sequel (5.21.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
     sqlite3 (1.4.1)
     temple (0.8.1)
-    test-unit (3.3.3)
-      power_assert
     tilt (2.0.9)
 
 PLATFORMS
@@ -20,10 +19,10 @@ PLATFORMS
 DEPENDENCIES
   minitest
   rack
+  rack-test
   sequel
   slim
   sqlite3
-  test-unit
 
 BUNDLED WITH
    1.17.3
