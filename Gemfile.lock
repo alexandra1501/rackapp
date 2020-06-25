@@ -2,16 +2,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitest (5.11.3)
-    rack (2.0.7)
+    rack (2.1.4)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     sequel (5.21.0)
-    slim (4.0.1)
-      temple (>= 0.7.6, < 0.9)
-      tilt (>= 2.0.6, < 2.1)
     sqlite3 (1.4.1)
-    temple (0.8.1)
-    tilt (2.0.9)
 
 PLATFORMS
   ruby
@@ -21,7 +16,6 @@ DEPENDENCIES
   rack
   rack-test
   sequel
-  slim
   sqlite3
 
 BUNDLED WITH
